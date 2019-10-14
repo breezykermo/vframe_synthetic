@@ -50,7 +50,7 @@ class SceneObjectMetadata:
   def material_mask(self):
     return f'{self.material}_cf'
 
-  
+
 class SceneObject:
 
   def __init__(self, metadata):

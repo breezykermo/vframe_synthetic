@@ -23,10 +23,10 @@ from app.utils import click_utils
 @click.option('-f', '--force', 'opt_force', is_flag=True,
   help='Force overwrite video file')
 @click.pass_context
-def cli(ctx, opt_dir_in, opt_fp_out, opt_fps, opt_bitrate, opt_codec, opt_ext, 
+def cli(ctx, opt_dir_in, opt_fp_out, opt_fps, opt_bitrate, opt_codec, opt_ext,
   opt_slice, opt_random, opt_force):
   """Converts still image sequence to video"""
-  
+
   from glob import glob
   from pathlib import Path
   import random
@@ -46,7 +46,7 @@ def cli(ctx, opt_dir_in, opt_fp_out, opt_fps, opt_bitrate, opt_codec, opt_ext,
     if Path(opt_fp_out).is_dir() and not opt_force:
       log.error(f'{opt_fp_out} exists. Use "-f/--force" to overwrite')
 
-  # glob comp images  
+  # glob comp images
   fps_im = sorted([im for im in glob(str(Path(opt_dir_in) / f'*.{opt_ext}'))])
   if opt_slice:
     fps_im = fps_im[opt_slice[0]:opt_slice[1]]

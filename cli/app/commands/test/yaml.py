@@ -34,7 +34,7 @@ def cli(ctx, opt_fp_cfg, opt_verbose):
     yaml_data = load_yml(opt_fp_cfg)
     log.debug('YAML is OK')
     if opt_verbose:
-      pprint(yaml_data)  
+      pprint(yaml_data)
   except Exception as e:
     log.error('YAML errors')
     pprint(yaml_data)

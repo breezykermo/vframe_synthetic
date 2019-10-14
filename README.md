@@ -51,6 +51,7 @@ Demo shows how to generate synthetic data for a simple scene with 3 objects (sig
 ### 3. Run Blender with Python Script
 
 ```
+conda activate vframe_synthetic
 cd cli/
 python cli_blender.py demo --blend ../data_store/blenders/vframe_danger_sign_static_public.blend --python app/blender/demos/camera_demo.py --config configs/demo/static_sign.yml
 ```

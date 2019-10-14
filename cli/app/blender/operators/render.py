@@ -41,7 +41,7 @@ class RenderManager:
 
     # TODO: include all settings
     self.cycles_device_default = self.scene.cycles.device
-    self.engine_default = self.scene.render.engine 
+    self.engine_default = self.scene.render.engine
 
     cfg_render = cfg.get('render')
 
@@ -108,7 +108,7 @@ class RenderManager:
     self.scene.render.use_sequencer = True
     self.scene.render.dither_intensity = 0.0  # noise setting, externalize
     self.scene.render.filter_size = 1.5
-    
+
 
   def set_engine_eevee(self):
     self.scene.render.engine = self.OPT_EEVEE

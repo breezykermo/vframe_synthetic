@@ -29,7 +29,7 @@ from app.utils import click_utils
 def cli(ctx, opt_fp_blender, opt_fp_blend, opt_fp_cfg, opt_fp_python,
   opt_checkpoint, opt_dry_run, opt_dir_cli_root):
   """Runs Blender demos and test"""
-  
+
   import subprocess
 
   log = app_cfg.LOG
@@ -48,4 +48,5 @@ def cli(ctx, opt_fp_blender, opt_fp_blend, opt_fp_cfg, opt_fp_python,
     log.debug(' '.join([str(x) for x in args]))
   else:
     # Dispatch subprocess to Blender
+    print(args)
     subprocess.call(args, stdin=None, stdout=None, stderr=None, shell=False)

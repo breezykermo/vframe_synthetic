@@ -35,7 +35,7 @@ class FileIOManager:
     self.fname_prefix = cfg_output.get('filename_prefix')
     self.ext = cfg_output.get('file_format').lower()
     self.fp_out_annos = join(self.fp_dir_out, app_cfg.FN_METADATA)
-    
+
     if not Path(self.fp_dir_out).exists():
       Path(self.fp_dir_out).mkdir(exist_ok=True, parents=True)
 

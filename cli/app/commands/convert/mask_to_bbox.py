@@ -14,7 +14,7 @@ from app.utils import click_utils
 @click.pass_context
 def cli(ctx, opt_dir_in, opt_force, opt_width):
   """Converts image, masks, and metadata to CSV annotations"""
-  
+
   from os.path import join
   from glob import glob
   from pathlib import Path
@@ -53,7 +53,7 @@ def cli(ctx, opt_dir_in, opt_force, opt_width):
   fps_masks = glob(join(fp_dir_im_masks, '*.png'))
   if len(fps_masks) != len(fps_reals):
     log.warn(f'Directories not balanced: {len(fps_masks)} masks != {len(fps_real)}')
-  
+
   log.info(f'Converting {len(fps_masks)} mask images to annotations...')
 
   # iterate through all images

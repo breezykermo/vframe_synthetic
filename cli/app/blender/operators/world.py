@@ -33,7 +33,7 @@ class WorldManager:
   node_active = None
 
   def __init__(self, cfg):
-    
+
     # get world
     world_cfg = cfg.get('world')
     self.name_world = world_cfg.get('name', 'World')
@@ -81,12 +81,12 @@ class WorldManager:
       if link.to_node.name == self.node_out.name:
         self.links.remove(link)
 
-  
+
   def set_rotation_idx(self, idx):
     '''Rotates the background image by degrees to alter lighting'''
     deg = self.rotations[idx]
     self.set_rotation_deg(deg)
-    
+
 
   def set_rotation_deg(self, deg):
     '''Rotates the background image by degrees to alter lighting'''
@@ -114,7 +114,7 @@ class WorldManager:
     #self.remove_cur_output()
 
 
-  def unmask(self): 
+  def unmask(self):
     ''''Resets World material to original'''
     # relink
     #self.links.new(self.node_orig_link_id, self.node_out_link_id)

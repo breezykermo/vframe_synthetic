@@ -56,7 +56,7 @@ class ClickComplex:
     # Complex version: gets commands in directory and in this file
     # Based on code from @wiretapped + HTSLAM
     def get_command(self, ctx, cmd_name):
-      global dir_plugins 
+      global dir_plugins
       if cmd_name in self.commands:
        return self.commands[cmd_name]
       ns = {}

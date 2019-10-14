@@ -55,7 +55,7 @@ class GroundManager:
       placeholders[obj_name] = o
     return placeholders
 
-  
+
 
   def mask(self):
     '''Changes object materials to colorfill'''
@@ -96,7 +96,7 @@ class GroundManager:
       mat_name_cfg = base_obj.get('colorfill_material')
       if mat_name_cfg in bpy.data.materials.keys():
         bpy.data.materials.remove(bpy.data.materials.get(mat_name_cfg))
-  
+
   @property
   def iterations(self):
     return self._iterations

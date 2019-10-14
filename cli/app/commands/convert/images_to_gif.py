@@ -27,10 +27,10 @@ ops_interpolation = ['nearest', 'antialias']
   default='nearest',
   help='Type of interpolation for resizing. Use "nearst" for annotation masks.')
 @click.pass_context
-def cli(ctx, opt_dir_in, opt_fp_out, opt_fps, opt_ext, 
+def cli(ctx, opt_dir_in, opt_fp_out, opt_fps, opt_ext,
   opt_slice, opt_decimate, opt_width, opt_force, opt_interp):
   """Converts still image to GIF"""
-  
+
   from glob import glob
   from pathlib import Path
 
@@ -49,7 +49,7 @@ def cli(ctx, opt_dir_in, opt_fp_out, opt_fps, opt_ext,
     if Path(opt_fp_out).is_dir() and not opt_force:
       log.error(f'{opt_fp_out} exists. Use "-f/--force" to overwrite')
 
-  # glob comp images  
+  # glob comp images
   fps_im = sorted([im for im in glob(str(Path(opt_dir_in) / f'*.{opt_ext}'))])
   if opt_slice:
     fps_im = fps_im[opt_slice[0]:opt_slice[1]]
@@ -89,5 +89,5 @@ def cli(ctx, opt_dir_in, opt_fp_out, opt_fps, opt_ext,
   #            duration=int((1.0/opt_fps)*1000),
   #            loop=0)
 
-  
+
   log.info('Done.')

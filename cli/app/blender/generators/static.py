@@ -20,17 +20,17 @@ from tqdm import tqdm, trange
 
 # Parse CLI args
 if '--' in sys.argv:
-  
+
   # build argument parser
   parser = argparse.ArgumentParser(description='Blender generator arguments')
-  parser.add_argument('--cfg', dest='opt_fp_cfg', 
-    help='Path to .yaml config file')
-  parser.add_argument('--root', dest='opt_dir_root', 
-    help='Path to vframe_synthetic directory')
-  parser.add_argument('--checkpoint', dest='opt_checkpoint', type=int, 
-    help='Checkpoint to resume')
-  parser.add_argument('--verbosity', dest='opt_verbosity', type=int, 
-    default=4, help='Verbosity 1 - 4')
+  parser.add_argument('--cfg', dest='opt_fp_cfg',
+                      help='Path to .yaml config file')
+  parser.add_argument('--root', dest='opt_dir_root',
+                      help='Path to vframe_synthetic directory')
+  parser.add_argument('--checkpoint', dest='opt_checkpoint', type=int,
+                      help='Checkpoint to resume')
+  parser.add_argument('--verbosity', dest='opt_verbosity', type=int,
+                      default=4, help='Verbosity 1 - 4')
 
   # parse from string
   args_str = ' '.join(sys.argv[sys.argv.index("--") + 1:])
@@ -77,6 +77,7 @@ log.debug(f'Resume checkpoint: {args.opt_checkpoint}')
 
 # init manager
 st = time.time()
+print(args.opt_fp_cfg)
 boss = Boss(args.opt_fp_cfg)
 
 # iterate data generate systems

@@ -20,10 +20,10 @@ from app.settings import app_cfg
 @click.option('--cleanup', 'opt_cleanup', is_flag=True, default=False, show_default=True,
   help='Deletes image sequence files after writing video')
 @click.pass_context
-def cli(ctx, opt_dir_ims, opt_fps, opt_bitrate, opt_codec, opt_fp_out_video, opt_bg_color, 
+def cli(ctx, opt_dir_ims, opt_fps, opt_bitrate, opt_codec, opt_fp_out_video, opt_bg_color,
   opt_write_video, opt_cleanup):
   """Composites real and mask images, writes optional video"""
-  
+
   import pandas as pd
   from glob import glob
   from pathlib import Path
@@ -56,7 +56,7 @@ def cli(ctx, opt_dir_ims, opt_fps, opt_bitrate, opt_codec, opt_fp_out_video, opt
 
   # generate image sequence
   for fp_im_mask, fp_im_real in tqdm(zip(fps_ims_mask, fps_ims_real), total=len(fps_ims_real)):
-    
+
     #im_mask = cv.cvtColor(cv.imread(fp_im_mask).astype(np.float32), cv.COLOR_BGR2BGRA)
     im_mask = cv.cvtColor(cv.imread(fp_im_mask), cv.COLOR_BGR2BGRA).astype(np.float32)
     bg_color = np.array([0.,0.,0.,255.])  # black fill
@@ -74,7 +74,7 @@ def cli(ctx, opt_dir_ims, opt_fps, opt_bitrate, opt_codec, opt_fp_out_video, opt
     opt_fp_out_video = str(Path(opt_dir_ims) / f'{Path(opt_dir_ims).name}.mp4')
 
   if opt_fp_out_video:
-    # glob comp images  
+    # glob comp images
     fps_ims_comp = sorted([im for im in glob(str(Path(opt_dir_ims_comp) / '*.png'))])
 
     opt_bitrate = f'{opt_bitrate}M'  # megabits / second

@@ -51,7 +51,7 @@ class BBox:
   @property
   def w(self):
     return (self.x2 - self.x1)
-  
+
   @property
   def width(self):
     return self.w
@@ -59,7 +59,7 @@ class BBox:
   @property
   def h(self):
     return (self.y2 - self.y1)
-  
+
   @property
   def height(self):
     return self.h
@@ -67,7 +67,7 @@ class BBox:
   @property
   def area(self):
     return self.w * self.h
-  
+
   @property
   def p1(self):
     return PointNorm(self.x1, self.y1)
@@ -79,14 +79,14 @@ class BBox:
   @property
   def xyxy(self):
     return (self.x1, self.y1, self.x2, self.y2)
-  
+
   @property
   def xywh(self):
     return (self.x1, self.y1, self.w, self.h)
 
   def to_bbox_labeled(self, label, label_index, color, fn):
     return BBoxLabeled(self.x1, self.y1, self.x2, self.y2, label, label_index, color, fn)
-  
+
   def jitter(self, per):
     '''Jitters the center xy and the wh of BBox
     :returns (BBoxNorm) jittered
@@ -134,7 +134,7 @@ class BBox:
   def translate(self, xyxy):
     pass
 
-  
+
 # ---------------------------------------------------------------------------
 #
 # Bounding Box normalized coords
@@ -144,7 +144,7 @@ class BBox:
 
 @dataclass
 class BBoxNorm:
-  
+
   x1: float
   y1: float
   x2: float
@@ -199,7 +199,7 @@ class BBoxNorm:
     w,h = rd.dim
     x1,y1,x2,y2 = list(map(int, (rd.x1 / w, rd.y1 / h, rd.x2 / w, rd.y2 / h)))
     return cls(x1, y1, x2, y2)
-  
+
   @classmethod
   def from_xywh(cls, xywh):
     x, y, w, h = xywh
@@ -225,11 +225,11 @@ class BBoxNorm:
 
 @dataclass
 class BBoxDim(BBoxNorm):
-  
+
   x1: int
   y1: int
   x2: int
-  y2: int  
+  y2: int
   dim: (int, int)
 
   @property
@@ -261,7 +261,7 @@ class BBoxDim(BBoxNorm):
     w,h = self.dim
     x1,y1,x2,y2 = (self.x1 / w, self.y1 / h, self.x2 / w, self.y2 / h)
     return BBoxNorm(x1, y1, x2, y2)
-  
+
   def to_expanded(self, ltrb, redistribute=True):
     """Expands BBox by number of pixels
     :param box: (tuple) left, top, right, bottom
@@ -293,7 +293,7 @@ class BBoxNormLabel(BBoxNorm):
   filename: str
 
   def to_colored(self, color_hex):
-    return BBoxNormLabelColor(self.x1, self.y1, self.x2, self.y2, 
+    return BBoxNormLabelColor(self.x1, self.y1, self.x2, self.y2,
       self.label, self.label_index, self.filename, color_hex)
 
 @dataclass
@@ -305,19 +305,19 @@ class BBoxDimLabel(BBoxDim):
   filename: str
 
   def to_colored(self, color_hex):
-    return BBoxDimLabelColor(self.x1, self.y1, self.x2, self.y2, 
+    return BBoxDimLabelColor(self.x1, self.y1, self.x2, self.y2,
       self.label, self.label_index, self.filename, color_hex)
 
 @dataclass
 class BBoxNormLabelColor(BBoxNormLabel):
-  '''Represent BBox info from pixel masks as norm floats. 
+  '''Represent BBox info from pixel masks as norm floats.
   Used for Blender mask annotations
   '''
   color: str
 
 @dataclass
 class BBoxDimLabelColor(BBoxDimLabel):
-  '''Represent BBox info from pixel masks as int. 
+  '''Represent BBox info from pixel masks as int.
   Used for Blender mask annotations
   '''
   color: str

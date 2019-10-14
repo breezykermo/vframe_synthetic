@@ -28,10 +28,10 @@ from app.utils import click_utils
   required=True, show_default=True,
   help=click_utils.show_help(types.GeneratorSystem))
 @click.pass_context
-def cli(ctx, opt_fp_blender, opt_fp_blend, opt_system, opt_fp_cfg, 
+def cli(ctx, opt_fp_blender, opt_fp_blend, opt_system, opt_fp_cfg,
   opt_checkpoint, opt_dry_run, opt_dir_cli_root):
   """Runs Blender synthetic data generator"""
-  
+
   import subprocess
 
   log = app_cfg.LOG
@@ -52,4 +52,5 @@ def cli(ctx, opt_fp_blender, opt_fp_blend, opt_system, opt_fp_cfg,
     log.debug(' '.join([str(x) for x in args]))
   else:
     # Dispatch subprocess to Blender
+    print(args)
     subprocess.call(args, stdin=None, stdout=None, stderr=None, shell=False)

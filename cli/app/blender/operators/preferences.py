@@ -41,7 +41,7 @@ class PreferenceManager:
     #bpy.context.preferences.system.memory_cache_limit = cfg_prefs.get('memory_cache_limit', 4096)  # 16GB
     #bpy.context.preferences.edit.undo_steps = cfg_prefs.get('undo_steps', 1)  # limit undo steps
     #bpy.context.preferences.edit.undo_memory_limit = cfg_prefs.get('undo_memory_limit', 16000)
-      
+
 
   def cleanup(self):
     '''Reset preferences'''

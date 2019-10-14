@@ -43,7 +43,7 @@ class ParticleSystem:
     self.particle_size = cfg.get('scale')
     self.size_random = cfg.get('scale_randomness')
 
-    if self.name_particle_settings in bpy.data.particles.keys(): 
+    if self.name_particle_settings in bpy.data.particles.keys():
       self.obj_particle = bpy.data.particles.get(self.name_particle_settings)
     else:
       log.error(f'Particle object "{self.name_particle_settings}" does not exist')
@@ -129,7 +129,7 @@ class Emitter:
     self.trainable = cfg.get('trainable', False)
     self.opt_randomize = self.cfg.get('randomize', False)
     self.systems = [ParticleSystem(self.name_emitter, x) for x in self.cfg.get('systems')]
-    
+
 
   def set_render_visibility(self, opt):
     '''Enables/disables source objects from being rendered'''
@@ -158,10 +158,10 @@ class Emitter:
     if self.opt_randomize:
       for s in self.systems:
         s.randomize()
-  
+
 
   def make_real(self):
-    
+
     self.system_objects = self.generate_placeholders(self.cfg.get('systems'))
 
     if not self.opt_make_real:
@@ -264,7 +264,7 @@ class Emitter:
         obj_scene = bpy.data.objects.get(base_name)
         material = bpy.data.materials.get(obj.get('material'))
         obj_scene.active_material = material
-        for i in range(len(obj.get('material_slots'))):          
+        for i in range(len(obj.get('material_slots'))):
           mslot = obj.get('material_slots')[i]
           log.debug(f'base_name: {base_name}, material: {material}, mslot: {mslot}')
           obj_scene.material_slots[i].material = obj.get('material_slots')[i]
@@ -277,7 +277,7 @@ class Emitter:
         obj_scene = bpy.data.objects.get(dupe_name)
         material = bpy.data.materials.get(obj.get('material'))
         obj_scene.active_material = material
-        for i in range(len(obj.get('material_slots'))):          
+        for i in range(len(obj.get('material_slots'))):
           obj_scene.material_slots[i].material = obj.get('material_slots')[i]
 
 
@@ -301,11 +301,11 @@ class ParticleSystemManager:
   '''Manages a system of ParticleObjects and Emitter'''
 
   def __init__(self, cfg):
-    
+
     self.cfg = cfg
     cfg_sys = cfg.get('particle_system', {})
     self._iterations = cfg_sys.get('iterations', 0)
-    
+
     # find max number of trainable objects
     n_trainable = 0
     for e in cfg_sys.get('emitters', []):
@@ -352,13 +352,13 @@ class ParticleSystemManager:
           scene_obj = bpy.data.objects.get(o.get('name'))
           if not scene_obj:
             log.error(f'Object name: {o.get("name")} does not exist')
-            
+
           o['material_slots'] = [ms.material for ms in scene_obj.material_slots]
 
     # create emitter objects
     self.emitters = [Emitter(x) for x in cfg_sys.get('emitters', [])]
 
-  
+
   def get_annotation_meta(self):
     """Returns annotation metadata"""
 
@@ -421,8 +421,8 @@ class ParticleSystemManager:
   def cleanup(self):
     for e in self.emitters:
       e.cleanup()
-  
-  
+
+
   @property
   def iterations(self):
     return self._iterations

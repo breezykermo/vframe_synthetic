@@ -29,7 +29,7 @@ class CameraView:
   """Variable names match config YAML"""
   height: float
   x_radius: float
-  y_radius: float 
+  y_radius: float
   frames: int
   target_xyz: list = (0,0,0)
   zoom: int = DEFAULT_FOCAL_LENGTH
@@ -42,7 +42,7 @@ class CameraView:
   @property
   def period(cls):
     return int(cls.frames) + 2
-  
+
 
 class CameraManager:
 
@@ -88,7 +88,7 @@ class CameraManager:
 
   def set_rotation_idx(self, cam_rot_iter):
     self.cur_cam_rot_iter = cam_rot_iter
-  
+
   def set_rotation_random(self):
     """Randomly sets a rotation from selected camera"""
     nframes = self._cam_views[self.cam_idx].frames
@@ -214,7 +214,7 @@ class CameraManager:
   def jitter_xyz(self, xyz, delta):
     return [random.uniform(_xyz - _delta, _xyz + _delta) for _xyz, _delta in zip(xyz, delta)]
 
-  
+
   def look_at_xyz(self, xyz, jitter=False):
       '''Orients camera towards XYZ coords'''
       xyz_targ = mathutils.Vector(xyz)
@@ -249,8 +249,8 @@ class CameraManager:
     if self.CAMERA_NAME in bpy.data.cameras.keys():
       bpy.data.cameras.remove(bpy.data.cameras.get(self.CAMERA_NAME))
 
-  
-  
+
+
   def num_view_frames(self,  idx):
     """Retruns number of frames viewable for this camera index"""
     return self._cam_views[idx].frames
@@ -267,4 +267,4 @@ class CameraManager:
   @property
   def cam_views(self):
     return self._cam_views
-  
+

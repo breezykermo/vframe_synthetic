@@ -13,7 +13,7 @@ import click
 @click.pass_context
 def cli(ctx, opt_fp_in, opt_fp_out, opt_dry_run):
   """Example CLI script"""
-  
+
   from pathlib import Path
 
   from app.settings import app_cfg
