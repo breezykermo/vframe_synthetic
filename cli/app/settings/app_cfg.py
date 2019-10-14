@@ -71,4 +71,7 @@ LOG = logging.getLogger('VFRAME')
 # Blender binary
 # -----------------------------------------------------------------------------
 
+## --- ON LINUX --- ##
 FP_BLENDER_BIN = str(Path.home() / 'code/blender-2.80-linux-glibc217-x86_64/blender')
+## --- ON MAC, likely --- ##
+# FP_BLENDER_BIN = '/Applications/Blender.app/Contents/MacOS/Blender'
