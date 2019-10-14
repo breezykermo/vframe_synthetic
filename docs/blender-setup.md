@@ -24,12 +24,12 @@ Blender 2.8 uses a bundled Python/PIP package located in the installed blender l
 
 Before installing new Python packages, remove the old version of Numpy distributed by Blender.
 
-- `cd ${BLENDER_PATH}`
-- `mkdir ${BLENDER_PATH}/python_libs_deprecated`
-- `mv ${BLENDER_PATH}/2.8/python/lib/python3.7/site-packages/numpy/ ${BLENDER_PATH}/python_libs_deprecated/`
+- `cd $BLENDER_PATH`
+- `mkdir $BLENDER_PATH/python_libs_deprecated`
+- `mv $BLENDER_PATH/2.80/python/lib/python3.7/site-packages/numpy/ $BLENDER_PATH/python_libs_deprecated/`
 
 Then, install PIP for Blender
 
-- navigate to Blender's python directory `cd ${BLENDER}/2.8.python/bin`
+- navigate to Blender's python directory `cd $BLENDER_PATH/2.80/python/bin`
 - install PIP by running `./python3.7m ../lib/python3.7/ensurepip`
 - install requirements.txt `./pip3.7 install -r vframe_synthetic/cli/requirements_blender.txt`

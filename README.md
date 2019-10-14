@@ -44,7 +44,7 @@ Demo shows how to generate synthetic data for a simple scene with 3 objects (sig
 
 [vframe_danger_sign_static_public.blend](https://vframe.ams3.digitaloceanspaces.com/v2/vframe_synthetic/data_store/blender/vframe_danger_sign_static_public.blend) to `data_store/blenders`
 
-### 2. Edit config .yml
+### 2. Edit config.yml
 
 - open `configs/demo/static_sign.yml` and edit the `render:output:filepath`
 
