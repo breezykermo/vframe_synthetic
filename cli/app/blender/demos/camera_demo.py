@@ -16,11 +16,11 @@ try:
   parser = argparse.ArgumentParser(description='Blender generator arguments')
   parser.add_argument('--cfg', dest='opt_fp_cfg', required=True, default=None,
     help='Path to .yaml config file')
-  parser.add_argument('--root', dest='opt_dir_root', 
+  parser.add_argument('--root', dest='opt_dir_root',
     help='Path to vframe_synthetic directory')
-  parser.add_argument('--checkpoint', dest='opt_checkpoint', type=int, 
+  parser.add_argument('--checkpoint', dest='opt_checkpoint', type=int,
     help='Checkpoint to resume')
-  parser.add_argument('--verbosity', dest='opt_verbosity', type=int, 
+  parser.add_argument('--verbosity', dest='opt_verbosity', type=int,
     default=4, help='Verbosity 1 - 4')
 
   # parse from string
@@ -99,9 +99,9 @@ fileio.annos_to_csv(anno_meta)
 # iterate data generator
 
 for cam_view_idx in trange(camera.num_iterations, desc='Camera', leave=False):
-  
+
   sigint.check()  # Check for signal interrupt to quit during loop
-  camera.set_cam_idx(cam_view_idx)  
+  camera.set_cam_idx(cam_view_idx)
   num_frames = camera.num_view_frames(cam_view_idx)
   log.debug(f'num_frames: {num_frames}')
 

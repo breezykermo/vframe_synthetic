@@ -28,7 +28,7 @@ Commands:
 ```
 
 ```
-python cli_convert.py 
+python cli_convert.py
 Commands:
   images_to_gif       Converts still image to GIF
   images_to_overlays  Composites real and mask images, writes optional video
@@ -40,7 +40,7 @@ Commands:
 
 Demo shows how to generate synthetic data for a simple scene with 3 objects (sign, tree, and rock). Demo is not intended to generate actual training data, but only to show basic functionality. More demos will be published later.
 
-### 1. Download Blender demo file 
+### 1. Download Blender demo file
 
 [vframe_danger_sign_static_public.blend](https://vframe.ams3.digitaloceanspaces.com/v2/vframe_synthetic/data_store/blender/vframe_danger_sign_static_public.blend) to `data_store/blenders`
 
@@ -52,7 +52,7 @@ Demo shows how to generate synthetic data for a simple scene with 3 objects (sig
 
 ```
 cd cli/
-python cli_blender.py demo --blend ../data_store/blenders/vframe_danger_sign_static_public.blend --python app/blender/tests/camera_demo.py --config configs/demo/static_sign.yml
+python cli_blender.py demo --blend ../data_store/blenders/vframe_danger_sign_static_public.blend --python app/blender/demos/camera_demo.py --config configs/demo/static_sign.yml
 ```
 
 This creates a metadata.csv file. See example [metadata.csv](docs/assets/metadata.csv)
@@ -108,7 +108,7 @@ python cli_convert.py images_to_gif -i $d/mask --fps 4  # gif mask
 
 ## Custom Scripts
 
-- add your custom scripts in `cli/commands/custom` to avoid conflict with future project updates 
+- add your custom scripts in `cli/commands/custom` to avoid conflict with future project updates
 - to run your custom scripts use `python cli_custom.py example` for example
 
 ## TODO
@@ -123,5 +123,3 @@ python cli_convert.py images_to_gif -i $d/mask --fps 4  # gif mask
 ## Help Wanted
 
 - Determine how to use rigid body objects with emitter system to avoid object overlaps in hair emitter
-
-
